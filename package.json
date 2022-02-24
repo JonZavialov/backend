@@ -1,13 +1,21 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "A backend for my website",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -e js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonZavialov/backend.git"
+  },
+  "author": "JonZavialov",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonZavialov/backend/issues"
+  },
+  "homepage": "https://github.com/JonZavialov/backend#readme",
   "dependencies": {
     "express": "^4.17.3"
   },
