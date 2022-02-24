@@ -23,7 +23,7 @@ function getPost(id) {
 }
 
 function insertPost(newPost) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const id = {
             id: helper.getNewId(posts)
         }
