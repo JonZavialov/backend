@@ -11,11 +11,10 @@ function mustBeInteger(req, res, next) {
 
 function checkFieldsPost(req, res, next) {
     const {
-        title,
-        content,
-        tags
+        author,
+        content
     } = req.body
-    if (title && content && tags) {
+    if (author && content) {
         next()
     } else {
         res.status(400).json({

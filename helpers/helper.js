@@ -8,20 +8,7 @@ const getNewId = (array) => {
     }
 }
 
-const newDate = () => new Date().toString()
-
-function mustBeInArray(array, id) {
-    return new Promise((resolve, reject) => {
-        const row = array.find(r => r.id == id)
-        if (!row) {
-            reject({
-                message: 'ID is not good',
-                status: 404
-            })
-        }
-        resolve(row)
-    })
-}
+const newDate = () => new Date().getTime()
 
 function writeJSONFile(filename, content) {
     fs.writeFileSync(filename, JSON.stringify(content), 'utf8', (err) => {
@@ -34,6 +21,5 @@ function writeJSONFile(filename, content) {
 module.exports = {
     getNewId,
     newDate,
-    mustBeInArray,
     writeJSONFile
 }
