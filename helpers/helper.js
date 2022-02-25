@@ -1,13 +1,5 @@
 const fs = require('fs')
 
-const getNewId = (array) => {
-    if (array.length > 0) {
-        return array[array.length - 1].id + 1
-    } else {
-        return 1
-    }
-}
-
 const newDate = () => new Date().getTime()
 
 function writeJSONFile(filename, content) {
@@ -19,7 +11,6 @@ function writeJSONFile(filename, content) {
 }
 
 module.exports = {
-    getNewId,
     newDate,
     writeJSONFile
 }

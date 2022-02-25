@@ -1,14 +1,3 @@
-function mustBeInteger(req, res, next) {
-    const id = req.params.id
-    if (!Number.isInteger(parseInt(id))) {
-        res.status(400).json({
-            message: 'ID must be an integer'
-        })
-    } else {
-        next()
-    }
-}
-
 function checkFieldsPost(req, res, next) {
     const {
         author,
@@ -24,6 +13,5 @@ function checkFieldsPost(req, res, next) {
 }
 
 module.exports = {
-    mustBeInteger,
     checkFieldsPost
 }

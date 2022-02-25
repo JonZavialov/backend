@@ -16,14 +16,10 @@ function getPosts() {
 
 function insertPost(newPost) {
     return new Promise((resolve) => {
-        const id = {
-            id: helper.getNewId(posts)
-        }
         const date = {
             createdAt: helper.newDate(),
         }
         newPost = {
-            ...id,
             ...date,
             ...newPost
         }
