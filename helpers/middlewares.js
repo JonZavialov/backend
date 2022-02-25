@@ -12,6 +12,8 @@ function checkFieldsComment(req, res, next) {
     }
 }
 
+// TODO: add a cooldown for users and some other anti spam measures
+
 module.exports = {
     checkFieldsComment
 }
