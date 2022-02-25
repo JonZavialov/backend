@@ -1,4 +1,4 @@
-function checkFieldsPost(req, res, next) {
+function checkFieldsComment(req, res, next) {
     const {
         author,
         content
@@ -13,5 +13,5 @@ function checkFieldsPost(req, res, next) {
 }
 
 module.exports = {
-    checkFieldsPost
+    checkFieldsComment
 }

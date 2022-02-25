@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const post = require('../models/post.model')
+const comment = require('../models/comment.model')
 const m = require('../helpers/middlewares')
 
-/* All posts */
+/* All Comments */
 router.get('/', async (_req, res) => {
-    await post.getPosts()
-        .then(posts => res.json(posts))
+    await comment.getComments()
+        .then(comments => res.json(comments))
         .catch(err => {
             if (err.status) {
                 res.status(err.status).json({
@@ -20,12 +20,12 @@ router.get('/', async (_req, res) => {
         })
 })
 
-/* Insert a new post */
-router.post('/', m.checkFieldsPost, async (req, res) => {
-    await post.insertPost(req.body)
-        .then(post => res.status(201).json({
-            message: `The post #${post.id} has been created`,
-            content: post
+/* Insert a new comment */
+router.post('/', m.checkFieldsComment, async (req, res) => {
+    await comment.insertComment(req.body)
+        .then(comment => res.status(201).json({
+            message: `The comment has been succesfully created`,
+            content: comment
         }))
         .catch(err => res.status(500).json({
             message: err.message
