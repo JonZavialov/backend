@@ -9,8 +9,20 @@ function checkFieldsComment(req, res, next) {
   }
 }
 
+function checkFieldsOAuth(req, res, next) {
+  const { code } = req.body;
+  if (code) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "fields are not good",
+    });
+  }
+}
+
 // TODO: add a cooldown for users and some other anti spam measures
 
 module.exports = {
   checkFieldsComment,
+  checkFieldsOAuth,
 };
