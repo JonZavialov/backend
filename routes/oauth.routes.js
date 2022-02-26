@@ -7,10 +7,8 @@ const m = require("../helpers/middlewares");
 router.post("/", m.checkFieldsOAuth, async (req, res) => {
   await helper
     .authorizeClient(req.body, process.env.CLIENT_SECRET, process.env.CLIENT_ID)
-    .then((accessToken) => {
-      res.status(200).json({
-        accessToken,
-      });
+    .then((data) => {
+      res.status(200).json(data);
     })
     .catch((err) =>
       res.status(500).json({

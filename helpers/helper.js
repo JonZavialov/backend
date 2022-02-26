@@ -16,7 +16,15 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
     const url = `${process.env.BASE_URL}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${body.code}`;
 
     axios
-      .post(url)
+      .post(
+        url,
+        { "body": "data" },
+        {
+          headers: {
+            "Accept": "application/json",
+          },
+        }
+      )
       .then((res) => {
         resolve(res.data);
       })
