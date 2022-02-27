@@ -1,8 +1,9 @@
 // TODO: generalize these
 
 function checkFieldsComment(req, res, next) {
-  const { author, content } = req.body;
-  if (author && content) {
+  // TODO: check that the avatar is valid
+  const { author, content, avatar } = req.body;
+  if (author && content && avatar) {
     next();
   } else {
     res.status(400).json({
