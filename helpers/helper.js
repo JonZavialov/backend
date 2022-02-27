@@ -37,8 +37,31 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
   });
 }
 
+function getUserData(body) {
+  return new Promise(async (resolve, reject) => {
+    const url = `https://api.github.com/user`;
+
+    axios
+      .get(url, {
+        headers: {
+          "Authorization": `token ${body.token}`,
+        },
+      })
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch(() => {
+        reject({
+          message: "invalid code",
+          status: 400,
+        });
+      });
+  });
+}
+
 module.exports = {
   newDate,
   writeJSONFile,
   authorizeClient,
+  getUserData,
 };
