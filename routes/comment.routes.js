@@ -22,7 +22,7 @@ router.get("/", async (_req, res) => {
 });
 
 /* Insert a new comment */
-router.post("/", m.checkFieldsComment, async (req, res) => {
+router.post("/", m.checkFieldsComment, m.checkGitHubAuth, async (req, res) => {
   await comment
     .insertComment(req.body)
     .then((comment) =>

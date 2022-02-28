@@ -17,9 +17,7 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
 
     axios
       .post(
-        url,
-        { "body": "data" },
-        {
+        url, {}, {
           headers: {
             "Accept": "application/json",
           },
