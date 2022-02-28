@@ -37,6 +37,7 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
 
 function getUserData(body) {
   return new Promise(async (resolve, reject) => {
+    // TODO: add to .env
     const url = `https://api.github.com/user`;
 
     axios
@@ -57,9 +58,33 @@ function getUserData(body) {
   });
 }
 
+function getAuthorData(token) {
+  return new Promise(async (resolve, reject) => {
+    const url = `${process.env.BASE_OAUTH_VALIDATION_URL}/${process.env.CLIENT_ID}/token`;
+    axios.post(
+      url, {
+        "access_token": token
+      }, {
+        auth: {
+          username: process.env.CLIENT_ID,
+          password: process.env.CLIENT_SECRET
+        }
+      }
+    ).then((res) => {
+      resolve({
+        author: res.data.user.login,
+        avatar: res.data.user.avatar_url,
+      })
+    }).catch(() => {
+      reject()
+    })
+  })
+}
+
 module.exports = {
   newDate,
   writeJSONFile,
   authorizeClient,
   getUserData,
+  getAuthorData
 };

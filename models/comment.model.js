@@ -13,14 +13,16 @@ function getComments() {
   });
 }
 
-function insertComment(newComment) {
-  return new Promise((resolve) => {
+function insertComment(content, token) {
+  return new Promise(async (resolve) => {
     const date = {
       createdAt: helper.newDate(),
     };
-    newComment = {
+    const authorData = await helper.getAuthorData(token)
+    const newComment = {
+      content,
       ...date,
-      ...newComment,
+      ...authorData
     };
     comments.push(newComment);
     helper.writeJSONFile("./data/comments.json", comments);

@@ -24,7 +24,7 @@ router.get("/", async (_req, res) => {
 /* Insert a new comment */
 router.post("/", m.checkFieldsComment, m.checkGitHubAuth, async (req, res) => {
   await comment
-    .insertComment(req.body)
+    .insertComment(req.body.content, req.body.token)
     .then((comment) =>
       res.status(201).json({
         message: `The comment has been succesfully created`,
