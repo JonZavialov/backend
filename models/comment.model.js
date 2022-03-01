@@ -1,5 +1,7 @@
 let comments = require("../data/comments.json");
+let timestamps = require("../data/comment-timestamps.json");
 const helper = require("../helpers/helper.js");
+const fs = require("fs");
 
 function getComments() {
   return new Promise((resolve, reject) => {
@@ -24,10 +26,16 @@ function insertComment(content, token) {
       ...date,
       ...authorData,
     };
+    writeTimestamps(token, date);
     comments.push(newComment);
     helper.writeJSONFile("./data/comments.json", comments);
     resolve(newComment);
   });
+}
+
+function writeTimestamps(token, date) {
+  timestamps[token] = date.createdAt;
+  helper.writeJSONFile("./data/comment-timestamps.json", timestamps);
 }
 
 module.exports = {

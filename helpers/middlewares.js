@@ -1,6 +1,7 @@
 // TODO: generalize these
 
 const helper = require("../helpers/helper");
+const fs = require("fs");
 
 function checkFieldsComment(req, res, next) {
   // TODO: check that the avatar is valid
@@ -49,11 +50,32 @@ async function checkGitHubAuth(req, res, next) {
     });
 }
 
-// TODO: add a cooldown for users and some other anti spam measures
+function checkUserTimeout(req, res, next) {
+  fs.readFile("data/comment-timestamps.json", (err, data) => {
+    if (err) {
+      res.status(500).json({
+        message: err.message,
+      });
+    }
+
+    const commentTimestamps = JSON.parse(data);
+    const currentTime = new Date().getTime();
+    const lastCommentTime = commentTimestamps[req.body.token];
+
+    if (currentTime - lastCommentTime > 10000 || !lastCommentTime) {
+      next();
+    } else {
+      res.status(400).json({
+        message: "user is on cooldown",
+      });
+    }
+  });
+}
 
 module.exports = {
   checkFieldsComment,
   checkFieldsOAuth,
   checkFieldsGithubUserData,
   checkGitHubAuth,
+  checkUserTimeout,
 };

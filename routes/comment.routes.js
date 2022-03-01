@@ -22,20 +22,26 @@ router.get("/", async (_req, res) => {
 });
 
 /* Insert a new comment */
-router.post("/", m.checkFieldsComment, m.checkGitHubAuth, async (req, res) => {
-  await comment
-    .insertComment(req.body.content, req.body.token)
-    .then((comment) =>
-      res.status(201).json({
-        message: `The comment has been succesfully created`,
-        content: comment,
-      })
-    )
-    .catch((err) =>
-      res.status(500).json({
-        message: err.message,
-      })
-    );
-});
+router.post(
+  "/",
+  m.checkFieldsComment,
+  m.checkUserTimeout,
+  m.checkGitHubAuth,
+  async (req, res) => {
+    await comment
+      .insertComment(req.body.content, req.body.token)
+      .then((comment) =>
+        res.status(201).json({
+          message: `The comment has been succesfully created`,
+          content: comment,
+        })
+      )
+      .catch((err) =>
+        res.status(500).json({
+          message: err.message,
+        })
+      );
+  }
+);
 
 module.exports = router;
