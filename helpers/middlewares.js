@@ -4,7 +4,6 @@ const helper = require("../helpers/helper");
 const fs = require("fs");
 
 function checkFieldsComment(req, res, next) {
-  // TODO: check that the avatar is valid
   const { content, token } = req.body;
   if (content && token) {
     next();
