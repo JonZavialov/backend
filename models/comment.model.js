@@ -18,11 +18,11 @@ function insertComment(content, token) {
     const date = {
       createdAt: helper.newDate(),
     };
-    const authorData = await helper.getAuthorData(token)
+    const authorData = await helper.getAuthorData(token);
     const newComment = {
       content,
       ...date,
-      ...authorData
+      ...authorData,
     };
     comments.push(newComment);
     helper.writeJSONFile("./data/comments.json", comments);
