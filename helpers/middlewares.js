@@ -71,10 +71,21 @@ function checkUserTimeout(req, res, next) {
   });
 }
 
+function checkCommentLength(req, res, next) {
+  if (req.body.content.length > 300) {
+    res.status(400).json({
+      message: "comment is too long",
+    });
+  } else {
+    next();
+  }
+}
+
 module.exports = {
   checkFieldsComment,
   checkFieldsOAuth,
   checkFieldsGithubUserData,
   checkGitHubAuth,
   checkUserTimeout,
+  checkCommentLength,
 };
