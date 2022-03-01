@@ -32,7 +32,7 @@ router.post(
       .insertComment(req.body.content, req.body.token)
       .then((comment) =>
         res.status(201).json({
-          message: `The comment has been succesfully created`,
+          message: `The comment has been successfully created`,
           content: comment,
         })
       )
