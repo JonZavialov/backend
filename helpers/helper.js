@@ -39,11 +39,8 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
 
 function getUserData(body) {
   return new Promise(async (resolve, reject) => {
-    // TODO: add to .env
-    const url = `https://api.github.com/user`;
-
     axios
-      .get(url, {
+      .get(process.env.BASE_USER_URL, {
         headers: {
           "Authorization": `token ${body.token}`,
         },
