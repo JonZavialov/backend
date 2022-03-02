@@ -4,7 +4,10 @@ const helper = require("../helpers/helper");
 const fs = require("fs");
 
 function checkFieldsComment(req, res, next) {
-  const { content, token } = req.body;
+  const {
+    content,
+    token
+  } = req.body;
   if (content && token) {
     next();
   } else {
@@ -15,7 +18,9 @@ function checkFieldsComment(req, res, next) {
 }
 
 function checkFieldsOAuth(req, res, next) {
-  const { code } = req.body;
+  const {
+    code
+  } = req.body;
   if (code) {
     next();
   } else {
@@ -26,7 +31,9 @@ function checkFieldsOAuth(req, res, next) {
 }
 
 function checkFieldsGithubUserData(req, res, next) {
-  const { token } = req.body;
+  const {
+    token
+  } = req.query;
   if (token) {
     next();
   } else {
@@ -38,7 +45,7 @@ function checkFieldsGithubUserData(req, res, next) {
 
 async function checkGitHubAuth(req, res, next) {
   await helper
-    .getAuthorData(req.body.token)
+    .validateAuthor(req.body.token)
     .then(() => {
       next();
     })

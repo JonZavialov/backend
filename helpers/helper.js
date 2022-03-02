@@ -17,9 +17,7 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
 
     axios
       .post(
-        url,
-        {},
-        {
+        url, {}, {
           headers: {
             "Accept": "application/json",
           },
@@ -37,12 +35,12 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
   });
 }
 
-function getUserData(body) {
+function getUserData(query) {
   return new Promise(async (resolve, reject) => {
     axios
       .get(process.env.BASE_USER_URL, {
         headers: {
-          "Authorization": `token ${body.token}`,
+          "Authorization": `token ${query.token}`,
         },
       })
       .then((res) => {
@@ -50,23 +48,21 @@ function getUserData(body) {
       })
       .catch(() => {
         reject({
-          message: "invalid code",
+          message: "invalid token",
           status: 400,
         });
       });
   });
 }
 
-function getAuthorData(token) {
+function validateAuthor(token) {
   return new Promise(async (resolve, reject) => {
     const url = `${process.env.BASE_OAUTH_VALIDATION_URL}/${process.env.CLIENT_ID}/token`;
     axios
       .post(
-        url,
-        {
+        url, {
           "access_token": token,
-        },
-        {
+        }, {
           auth: {
             username: process.env.CLIENT_ID,
             password: process.env.CLIENT_SECRET,
@@ -90,5 +86,5 @@ module.exports = {
   writeJSONFile,
   authorizeClient,
   getUserData,
-  getAuthorData,
+  validateAuthor,
 };

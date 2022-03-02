@@ -20,7 +20,7 @@ function insertComment(content, token) {
     const date = {
       createdAt: helper.newDate(),
     };
-    const authorData = await helper.getAuthorData(token);
+    const authorData = await helper.validateAuthor(token);
     const newComment = {
       content,
       ...date,
