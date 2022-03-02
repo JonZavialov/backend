@@ -88,6 +88,20 @@ function checkCommentLength(req, res, next) {
   }
 }
 
+function checkFieldsNationalDays(req, res, next) {
+  const {
+    month,
+    day
+  } = req.query;
+  if (month && day) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "fields are not good",
+    });
+  }
+}
+
 module.exports = {
   checkFieldsComment,
   checkFieldsOAuth,
@@ -95,4 +109,5 @@ module.exports = {
   checkGitHubAuth,
   checkUserTimeout,
   checkCommentLength,
+  checkFieldsNationalDays
 };

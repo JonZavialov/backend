@@ -81,10 +81,28 @@ function validateAuthor(token) {
   });
 }
 
+function getNationalDays(query) {
+  return new Promise(async (resolve, reject) => {
+    const url = `${process.env.BASE_DAYS_URL}/${query.month}/${query.day}`;
+    axios
+      .get(url)
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch(() => {
+        reject({
+          message: "invalid date",
+          status: 400,
+        });
+      });
+  });
+}
+
 module.exports = {
   newDate,
   writeJSONFile,
   authorizeClient,
   getUserData,
   validateAuthor,
+  getNationalDays
 };

@@ -5,6 +5,7 @@ const m = require("../helpers/middlewares");
 
 /* Gets user information from token */
 router.get("/getUserData", m.checkFieldsGithubUserData, async (req, res) => {
+  // TODO: change this to kebab case
   await helper
     .getUserData(req.query)
     .then((data) => {
