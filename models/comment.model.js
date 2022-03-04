@@ -1,7 +1,6 @@
 let comments = require("../data/comments.json");
 let timestamps = require("../data/comment-timestamps.json");
 const helper = require("../helpers/helper.js");
-const fs = require("fs");
 
 function getComments() {
   return new Promise((resolve, reject) => {

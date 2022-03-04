@@ -17,7 +17,9 @@ function authorizeClient(body, CLIENT_SECRET, CLIENT_ID) {
 
     axios
       .post(
-        url, {}, {
+        url,
+        {},
+        {
           headers: {
             "Accept": "application/json",
           },
@@ -60,9 +62,11 @@ function validateAuthor(token) {
     const url = `${process.env.BASE_OAUTH_VALIDATION_URL}/${process.env.CLIENT_ID}/token`;
     axios
       .post(
-        url, {
+        url,
+        {
           "access_token": token,
-        }, {
+        },
+        {
           auth: {
             username: process.env.CLIENT_ID,
             password: process.env.CLIENT_SECRET,
@@ -104,5 +108,5 @@ module.exports = {
   authorizeClient,
   getUserData,
   validateAuthor,
-  getNationalDays
+  getNationalDays,
 };

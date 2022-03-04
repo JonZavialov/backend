@@ -4,10 +4,7 @@ const helper = require("../helpers/helper");
 const fs = require("fs");
 
 function checkFieldsComment(req, res, next) {
-  const {
-    content,
-    token
-  } = req.body;
+  const { content, token } = req.body;
   if (content && token) {
     next();
   } else {
@@ -18,9 +15,7 @@ function checkFieldsComment(req, res, next) {
 }
 
 function checkFieldsOAuth(req, res, next) {
-  const {
-    code
-  } = req.body;
+  const { code } = req.body;
   if (code) {
     next();
   } else {
@@ -31,9 +26,7 @@ function checkFieldsOAuth(req, res, next) {
 }
 
 function checkFieldsGithubUserData(req, res, next) {
-  const {
-    token
-  } = req.query;
+  const { token } = req.query;
   if (token) {
     next();
   } else {
@@ -89,11 +82,22 @@ function checkCommentLength(req, res, next) {
 }
 
 function checkFieldsNationalDays(req, res, next) {
-  const {
-    month,
-    day
-  } = req.query;
+  const { month, day } = req.query;
   if (month && day) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "fields are not good",
+    });
+  }
+}
+
+function checkFieldsAnalytics(req, res, next) {
+  const regexExp =
+    /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
+
+  const { uuid } = req.body;
+  if (uuid && regexExp.test(uuid)) {
     next();
   } else {
     res.status(400).json({
@@ -109,5 +113,6 @@ module.exports = {
   checkGitHubAuth,
   checkUserTimeout,
   checkCommentLength,
-  checkFieldsNationalDays
+  checkFieldsNationalDays,
+  checkFieldsAnalytics,
 };
