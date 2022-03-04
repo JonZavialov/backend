@@ -1,6 +1,7 @@
 // TODO: generalize these
 
 const helper = require("../helpers/helper");
+const users = require("../data/users.json");
 const fs = require("fs");
 
 function checkFieldsComment(req, res, next) {
@@ -106,6 +107,17 @@ function checkFieldsAnalytics(req, res, next) {
   }
 }
 
+function checkFieldsNewUser(req, res, next) {
+  const uuid = req.body.uuid;
+  if (!users[uuid]) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "uuid already exists",
+    });
+  }
+}
+
 module.exports = {
   checkFieldsComment,
   checkFieldsOAuth,
@@ -115,4 +127,5 @@ module.exports = {
   checkCommentLength,
   checkFieldsNationalDays,
   checkFieldsAnalytics,
+  checkFieldsNewUser,
 };
