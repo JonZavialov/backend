@@ -25,4 +25,26 @@ router.post(
   }
 );
 
+/* Adds a visit to the user in the database */
+router.post(
+  "/addvisit",
+  m.checkFieldsAnalytics,
+  m.checkFieldsAddVisit,
+  async (req, res) => {
+    await user
+      .addVisit(req.body)
+      .then((visits) =>
+        res.status(201).json({
+          message: `The visit has been added`,
+          visits,
+        })
+      )
+      .catch((err) =>
+        res.status(500).json({
+          message: err.message,
+        })
+      );
+  }
+);
+
 module.exports = router;

@@ -118,6 +118,17 @@ function checkFieldsNewUser(req, res, next) {
   }
 }
 
+function checkFieldsAddVisit(req, res, next) {
+  const uuid = req.body.uuid;
+  if (users[uuid]) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "uuid does not exist",
+    });
+  }
+}
+
 module.exports = {
   checkFieldsComment,
   checkFieldsOAuth,
@@ -128,4 +139,5 @@ module.exports = {
   checkFieldsNationalDays,
   checkFieldsAnalytics,
   checkFieldsNewUser,
+  checkFieldsAddVisit,
 };

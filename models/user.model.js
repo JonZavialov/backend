@@ -9,6 +9,16 @@ function insertNewUser({ uuid }) {
   });
 }
 
+function addVisit({ uuid }) {
+  console.log(uuid);
+  return new Promise(async (resolve) => {
+    users[uuid]++;
+    helper.writeJSONFile("./data/users.json", users);
+    resolve(users[uuid]);
+  });
+}
+
 module.exports = {
   insertNewUser,
+  addVisit,
 };
