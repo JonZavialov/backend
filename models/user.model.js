@@ -18,7 +18,14 @@ function addVisit({ uuid }) {
   });
 }
 
+function getUsers() {
+  return new Promise((resolve, reject) => {
+    resolve(users);
+  });
+}
+
 module.exports = {
   insertNewUser,
   addVisit,
+  getUsers,
 };

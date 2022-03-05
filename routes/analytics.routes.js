@@ -47,4 +47,15 @@ router.post(
   }
 );
 
+router.get("/", async (_req, res) => {
+  await user
+    .getUsers()
+    .then((users) => res.json(users))
+    .catch((err) => {
+      res.status(500).json({
+        message: err.message,
+      });
+    });
+});
+
 module.exports = router;
