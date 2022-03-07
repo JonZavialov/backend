@@ -3,7 +3,7 @@ const router = express.Router();
 const helper = require("../helpers/helper");
 const m = require("../helpers/middlewares");
 
-/* Gets access token from client secret */
+/* Gets access token from github client secret */
 router.post("/", m.checkFieldsOAuth, async (req, res) => {
   await helper
     .authorizeClient(req.body, process.env.CLIENT_SECRET, process.env.CLIENT_ID)
