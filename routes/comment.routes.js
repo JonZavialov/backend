@@ -24,7 +24,7 @@ router.get("/", async (_req, res) => {
 /* Insert a new comment */
 router.post(
   "/",
-  m.checkFieldsComment,
+  (req, res, next) => m.checkFields(req, res, next, ["content", "token"]),
   m.checkCommentLength,
   m.checkGitHubAuth,
   m.checkUserTimeout,

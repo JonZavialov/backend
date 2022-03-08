@@ -6,6 +6,7 @@ const m = require("../helpers/middlewares");
 /* Adds a new user to the database */
 router.post(
   "/newuser",
+  (req, res, next) => m.checkFields(req, res, next, ['uuid']),
   m.checkFieldsAnalytics,
   m.checkFieldsNewUser,
   async (req, res) => {
@@ -28,6 +29,7 @@ router.post(
 /* Adds a visit to the user in the database */
 router.post(
   "/addvisit",
+  (req, res, next) => m.checkFields(req, res, next, ['uuid']),
   m.checkFieldsAnalytics,
   m.checkFieldsAddVisit,
   async (req, res) => {

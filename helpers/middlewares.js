@@ -1,40 +1,23 @@
-// TODO: generalize these
-
 const helper = require("../helpers/helper");
 const users = require("../data/users.json");
 const fs = require("fs");
 
-function checkFieldsComment(req, res, next) {
-  const { content, token } = req.body;
-  if (content && token) {
-    next();
-  } else {
-    res.status(400).json({
-      message: "fields are not good",
-    });
-  }
-}
+function checkFields(req, res, next, keys, query = false) {
+  let obj
+  if (query) obj = req.query;
+  else obj = req.body;
 
-function checkFieldsOAuth(req, res, next) {
-  const { code } = req.body;
-  if (code) {
-    next();
-  } else {
-    res.status(400).json({
-      message: "fields are not good",
-    });
-  }
-}
+  let keysPresent = true
+  keys.forEach(key => {
+    if (!obj[key]) {
+      res.status(400).json({
+        message: "fields are not good"
+      })
+      keysPresent = false
+    }
+  })
 
-function checkFieldsGithubUserData(req, res, next) {
-  const { token } = req.query;
-  if (token) {
-    next();
-  } else {
-    res.status(400).json({
-      message: "fields are not good",
-    });
-  }
+  if (keysPresent) next()
 }
 
 async function checkGitHubAuth(req, res, next) {
@@ -73,6 +56,7 @@ function checkUserTimeout(req, res, next) {
 }
 
 function checkCommentLength(req, res, next) {
+  console.log('comment length')
   if (req.body.content.length > 300) {
     res.status(400).json({
       message: "comment is too long",
@@ -82,27 +66,14 @@ function checkCommentLength(req, res, next) {
   }
 }
 
-function checkFieldsNationalDays(req, res, next) {
-  const { month, day } = req.query;
-  if (month && day) {
-    next();
-  } else {
-    res.status(400).json({
-      message: "fields are not good",
-    });
-  }
-}
-
 function checkFieldsAnalytics(req, res, next) {
   const regexExp =
     /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-
-  const { uuid } = req.body;
-  if (uuid && regexExp.test(uuid)) {
+  if (regexExp.test(req.body.uuid)) {
     next();
   } else {
     res.status(400).json({
-      message: "fields are not good",
+      message: "invalid uuid format",
     });
   }
 }
@@ -130,14 +101,11 @@ function checkFieldsAddVisit(req, res, next) {
 }
 
 module.exports = {
-  checkFieldsComment,
-  checkFieldsOAuth,
-  checkFieldsGithubUserData,
   checkGitHubAuth,
   checkUserTimeout,
   checkCommentLength,
-  checkFieldsNationalDays,
   checkFieldsAnalytics,
   checkFieldsNewUser,
   checkFieldsAddVisit,
+  checkFields
 };

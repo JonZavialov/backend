@@ -4,7 +4,7 @@ const helper = require("../helpers/helper");
 const m = require("../helpers/middlewares");
 
 /* Gets national day information from a date */
-router.get("/", m.checkFieldsNationalDays, async (req, res) => {
+router.get("/", (req, res, next) => m.checkFields(req, res, next, ['month', 'day'], true), async (req, res) => {
   await helper
     .getNationalDays(req.query)
     .then((data) => {
