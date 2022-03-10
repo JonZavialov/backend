@@ -9,13 +9,13 @@
 <p align="center">The backend for my website</p>
 <a href="https://jonzav.me/">View Website</a>
 
-## 👨‍💻 Development
-
-This project is a currently in progress by Jonathan.
-
 ## 💻 Frontend
 
 View the frontend code at its [repository](https://github.com/JonZavialov/portfolio4).
+
+## 👨‍💻 Development
+
+This project is currently in progress by Jonathan.
 
 <br><br><br><br>
 
