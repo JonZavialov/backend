@@ -3,7 +3,7 @@ const router = express.Router();
 const comment = require("../models/comment.model");
 const m = require("../helpers/middlewares");
 
-/* All Comments */
+/* Gets All Comments */
 router.get("/", async (_req, res) => {
   await comment
     .getComments()
