@@ -17,8 +17,8 @@ app.listen(80);
 
 var fs = require("fs");
 var https = require("https");
-var privateKey = fs.readFileSync("sslcert/private.key", "utf8");
-var certificate = fs.readFileSync("sslcert/certificate.crt", "utf8");
+var privateKey = fs.readFileSync("sslcert/privkey.pem", "utf8");
+var certificate = fs.readFileSync("sslcert/cert.pem", "utf8");
 var credentials = { key: privateKey, cert: certificate };
 var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(443);
