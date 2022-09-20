@@ -49,13 +49,24 @@ router.post(
   }
 );
 
-router.get("/", async (_req, res) => {
+router.get("/", async(_req, res) => {
   await user
     .getUsers()
     .then((users) => res.json(users))
     .catch((err) => {
       res.status(500).json({
-        message: err.message,
+        message: err.message
+      });
+    });
+});
+
+router.get("/info", async(_req, res) => {
+  await user
+    .getInfo()
+    .then((dict) => res.json(dict))
+    .catch((err) => {
+      res.status(500).json({
+        message: err.message
       });
     });
 });
