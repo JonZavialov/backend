@@ -1,9 +1,11 @@
 const helper = require("../helpers/helper.js");
 const users = require("../data/users.json");
-let lastUniqueUser = 'No date available';
+let lastUniqueUserDate = 'No date available';
+let lastUniqueUserIP = 'No IP available'
 
-function insertNewUser({ uuid }) {
-  lastUniqueUser = Date();
+function insertNewUser({ uuid }, ip) {
+  lastUniqueUserDate = Date();
+  lastUniqueUserIP = ip
   
   return new Promise(async (resolve) => {
     users[uuid] = 1;
@@ -34,6 +36,11 @@ function getInfo() {
     Object.keys(users).forEach(user => {
       totalVisits += users[user]
     });
+
+    let lastUniqueUser = {
+      lastUniqueUserDate,
+      lastUniqueUserIP
+    }
 
     resolve({
       uniqueUsers,

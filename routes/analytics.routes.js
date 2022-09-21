@@ -11,7 +11,7 @@ router.post(
   m.checkFieldsNewUser,
   async (req, res) => {
     await user
-      .insertNewUser(req.body)
+      .insertNewUser(req.body, req.ip)
       .then((uuid) =>
         res.status(201).json({
           message: `The user has been successfully created`,
