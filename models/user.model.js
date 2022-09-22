@@ -38,8 +38,8 @@ function getInfo() {
     });
 
     let lastUniqueUser = {
-      lastUniqueUserDate,
-      lastUniqueUserIP
+      "date": lastUniqueUserDate,
+      "IP": lastUniqueUserIP
     }
 
     resolve({
