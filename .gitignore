@@ -2,5 +2,7 @@ node_modules
 package-lock.json
 .vscode
 comments.json
+comment-timestamps.json
+users.json
 .env
 sslcert

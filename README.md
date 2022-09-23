@@ -53,6 +53,19 @@ mkdir sslcert
 
 Generate an ssl certificate with whatever toold you prefer using. For free certificates, I use [Certbot](https://certbot.eff.org/) with [Let's Encrypt](https://letsencrypt.org/). Once generated, move `cert.pem` and `privkey.pem` into the `sslcert` directory.
 
+#### Add environment variables
+
+Create a file called `.env`
+
+```
+BASE_OAUTH_VALIDATION_URL=https://api.github.com/applications
+CLIENT_ID=<your github api client id>
+CLIENT_SECRET=<your github api client secret>
+BASE_USER_URL=https://api.github.com/user
+BASE_URL=https://github.com/login/oauth/access_token
+BASE_DAYS_URL=https://national-api-day.herokuapp.com/api/date
+```
+
 #### Run server
 
 - [node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
