@@ -45,7 +45,7 @@ git clone https://github.com/JonZavialov/backend-docs.git
 npm i
 ```
 
-#### Add ssl certificates
+#### Generate ssl certificates
 
 ```
 mkdir sslcert
