@@ -45,6 +45,14 @@ git clone https://github.com/JonZavialov/backend-docs.git
 npm i
 ```
 
+#### Add ssl certificates
+
+```
+mkdir sslcert
+```
+
+Generate an ssl certificate with whatever toold you prefer using. For free certificates, I use [Certbot](https://certbot.eff.org/) with [Let's Encrypt](https://letsencrypt.org/). Once generated, move `cert.pem` and `privkey.pem` into the `sslcert` directory.
+
 #### Run server
 
 - [node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
