@@ -45,13 +45,13 @@ git clone https://github.com/JonZavialov/backend-docs.git
 npm i
 ```
 
-#### Add ssl certificates
+#### Generate ssl certificates
 
 ```
 mkdir sslcert
 ```
 
-Generate an ssl certificate with whatever toold you prefer using. For free certificates, I use [Certbot](https://certbot.eff.org/) with [Let's Encrypt](https://letsencrypt.org/). Once generated, move `cert.pem` and `privkey.pem` into the `sslcert` directory.
+Generate an ssl certificate with whatever tool you prefer using. For free certificates, I use [Certbot](https://certbot.eff.org/) with [Let's Encrypt](https://letsencrypt.org/). Once generated, move `cert.pem` and `privkey.pem` into the `sslcert` directory.
 
 #### Add environment variables
 
