@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">The backend for my website</p>
-<a href="https://jonzav.me/">View Website</a>
+<a href="https://jonzav.me/">View Website</a> <br>
 <a href="https://api.jonzav.me/">View Documentation</a>
 
 ## 💻 Frontend
