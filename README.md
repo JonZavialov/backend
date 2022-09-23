@@ -18,6 +18,41 @@ View the frontend code at its [repository](https://github.com/JonZavialov/portfo
 
 View the docs for this api [here](https://api.jonzav.me).
 
+## 🧪 Try It
+
+#### Clone repo
+
+- [Git](https://git-scm.com/downloads)
+
+```
+git clone https://github.com/JonZavialov/backend.git
+cd backend
+```
+
+#### Clone docs
+
+- [Git](https://git-scm.com/downloads)
+
+```
+git clone https://github.com/JonZavialov/backend-docs.git
+```
+
+#### Install dependencies
+
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+```
+npm i
+```
+
+#### Run server
+
+- [node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+```
+node index.js
+```
+
 ## 👨‍💻 Development
 
 This project is currently in progress by Jonathan.
