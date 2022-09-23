@@ -49,6 +49,7 @@ router.post(
   }
 );
 
+/* Returns a json object of uuids */
 router.get("/", async(_req, res) => {
   await user
     .getUsers()
@@ -60,6 +61,7 @@ router.get("/", async(_req, res) => {
     });
 });
 
+/* Returns more information about website visits */
 router.get("/info", async(_req, res) => {
   await user
     .getInfo()
