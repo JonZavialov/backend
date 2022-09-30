@@ -37,11 +37,6 @@ cd backend
 git clone https://github.com/JonZavialov/backend-docs.git
 ```
 
-#### Move files into public folder
-
-1. Create a folder in the root directory called `public`
-2. From the `docs` folder, move everything except the README and index file into the `public` folder.
-
 #### Install dependencies
 
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
