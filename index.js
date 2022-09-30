@@ -12,7 +12,7 @@ app.use(
   })
 );
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static('backend-docs'));
 app.use(require("./routes/index.routes"));
 app.listen(80);
 
