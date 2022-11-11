@@ -89,11 +89,10 @@ function validateAuthor(token) {
 function getNationalDays(query){
   return new Promise(async (resolve, reject) => {
     try{
-      res = {
+      resolve({
         date: `${new Date().getFullYear()}-${query.month}-${query.day}`,
         holidays: holidays[query.month][query.day]
-      }
-      resolve(res)
+      })
     }catch(err){
       reject(err)
     }
