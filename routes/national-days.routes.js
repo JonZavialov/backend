@@ -8,10 +8,7 @@ router.get("/", (req, res, next) => m.checkFields(req, res, next, ['month', 'day
   await helper
     .getNationalDays(req.query)
     .then((data) => {
-      helper.formatDates(data, req.query)
-      .then((formatted) => {
-        res.status(200).json(formatted);
-      })
+      res.status(200).json(data);
     })
     .catch((err) =>
       res.status(500).json({

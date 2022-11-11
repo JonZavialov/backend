@@ -63,10 +63,7 @@ CLIENT_ID=<your github api client id>
 CLIENT_SECRET=<your github api client secret>
 BASE_USER_URL=https://api.github.com/user
 BASE_URL=https://github.com/login/oauth/access_token
-HOLIDAYAPI_KEY=<your holiday api key>
 ```
-
-You can get a free Holiday API key [here](https://holidayapi.com/).
 
 #### Run server
 

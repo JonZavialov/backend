@@ -1,9 +1,6 @@
 const fs = require("fs");
 const axios = require("axios");
-
-const holidayClass = require('holidayapi').HolidayAPI
-const key = process.env.HOLIDAYAPI_KEY
-const holidayApi = new holidayClass({ key });
+holidays = require('../data/holidays.json')
 
 const newDate = () => new Date().getTime();
 
@@ -89,27 +86,13 @@ function validateAuthor(token) {
   });
 }
 
-function getNationalDays(query) {
-  return holidayApi.holidays({
-    country: 'US',
-    year: new Date().getFullYear() - 1,
-    month: query.month,
-    day: query.day
-  });
-}
-
-function formatDates(data, query){
-  return new Promise(async (resolve) => {
-    formatted = {
-      date: `${new Date().getFullYear()}-${query.month}-${query.day}`,
-      holidays: []
+function getNationalDays(query){
+  return new Promise(async (resolve, reject) => {
+    try{
+      resolve(holidays[query.month][query.day])
+    }catch(err){
+      reject(err)
     }
-
-    data.holidays.forEach(e => {
-      formatted.holidays.push(e.name)
-    });
-
-    resolve(formatted)
   })
 }
 
@@ -119,6 +102,5 @@ module.exports = {
   authorizeClient,
   getUserData,
   validateAuthor,
-  getNationalDays,
-  formatDates
+  getNationalDays
 };
