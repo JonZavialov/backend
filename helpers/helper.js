@@ -90,7 +90,7 @@ function getNationalDays(query){
   return new Promise(async (resolve, reject) => {
     try{
       resolve({
-        date: `${new Date().getFullYear()}-${query.month}-${query.day}`,
+        date: `${query.month}-${query.day}-${new Date().getFullYear()}`,
         holidays: holidays[query.month][query.day]
       })
     }catch(err){
