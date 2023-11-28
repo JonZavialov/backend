@@ -99,11 +99,27 @@ function getNationalDays(query){
   })
 }
 
+function getRepoContents(query){
+  return new Promise(async (resolve, reject) => {
+    axios
+      .get(`${process.env.BASE_GITHUB_API_URL}/repos/JonZavialov/${query.repo}/contents/${query.path}`)
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch(() => {
+        reject({
+          message: "invalid",
+        });
+      });
+  })
+}
+
 module.exports = {
   newDate,
   writeJSONFile,
   authorizeClient,
   getUserData,
   validateAuthor,
-  getNationalDays
+  getNationalDays,
+  getRepoContents
 };

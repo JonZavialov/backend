@@ -18,4 +18,17 @@ router.get("/getUserData", (req, res, next) => m.checkFields(req, res, next, ['t
     );
 });
 
+router.get("/repoContents", (req, res, next) => m.checkFields(req, res, next, ['repo', 'path'], true), async (req, res) => {
+  await helper
+    .getRepoContents(req.query)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) =>
+      res.status(500).json({
+        message: err.message,
+      })
+    );
+})
+
 module.exports = router;
