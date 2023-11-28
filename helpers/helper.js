@@ -106,10 +106,10 @@ function getRepoContents(query){
       .then((res) => {
         resolve(res.data);
       })
-      .catch(() => {
-        reject({
-          message: "invalid",
-        });
+      .catch((res) => {
+        reject(
+          res.data
+        );
       });
   })
 }
