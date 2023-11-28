@@ -107,9 +107,7 @@ function getRepoContents(query){
         resolve(res.data);
       })
       .catch((res) => {
-        reject(
-          res.data
-        );
+        reject(res.response.data);
       });
   })
 }

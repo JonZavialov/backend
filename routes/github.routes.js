@@ -24,10 +24,8 @@ router.get("/repoContents", (req, res, next) => m.checkFields(req, res, next, ['
     .then((data) => {
       res.status(200).json(data);
     })
-    .catch((err) =>
-      res.status(500).json({
-        err
-      })
+    .catch((data) =>
+      res.status(500).json(data)
     );
 })
 
