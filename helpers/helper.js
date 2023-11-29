@@ -102,7 +102,9 @@ function getNationalDays(query){
 function getRepoContents(query){
   return new Promise(async (resolve, reject) => {
     axios
-      .get(`${process.env.BASE_GITHUB_API_URL}/repos/JonZavialov/${query.repo}/contents/${query.path}`)
+      .get(`${process.env.BASE_GITHUB_API_URL}/repos/JonZavialov/${query.repo}/contents/${query.path}`, {
+        headers: {"Authorization": `Bearer ${process.env.PERSONAL_GITHUB_TOKEN}`}
+      })
       .then((res) => {
         resolve(res.data);
       })
